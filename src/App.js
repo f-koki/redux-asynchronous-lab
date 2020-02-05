@@ -11,20 +11,23 @@ function App({ count, onIncrementClick }) {
   )
 }
 
-export default connect(
-  // このコンポーネントにstoreから渡したいstateはこちら
-  store => {
-    return {
-      count: store.count,
-      // onIncrementClick: state.onIncrementClick ここに書いてはいけない
-    }
-  },
-  // このコンポーネントで実行したいactionの記述はこちら
-  dispatch => {
-    return {
-      onIncrementClick: () => {
-        dispatch({ type: 'INCREMENT' })
-      }
+function mapStateToProps(store) {
+  return {
+    count: store.count
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onIncrementClick: () => {
+      dispatch({ type: 'INCREMENT' })
     }
   }
+}
+
+export default connect(
+  // このコンポーネントにstoreから渡したいstateはこちら
+  mapStateToProps,
+  // このコンポーネントで実行したいactionの記述はこちら
+  mapDispatchToProps
 )(App);
