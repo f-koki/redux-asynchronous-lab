@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux';
 
-function App() {
+function App({ count, onIncrementClick }) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <span>{count}</span>
+      <button onClick={onIncrementClick}>increment</button>
     </div>
-  );
+  )
 }
 
-export default App;
+export default connect(
+  // このコンポーネントにstoreから渡したいstateはこちら
+  state => {
+    return {
+      count: state.count,
+      // onIncrementClick: state.onIncrementClick ここに書いてはいけない
+    }
+  },
+  // このコンポーネントで実行したいactionの記述はこちら
+  dispatch => {
+    return {
+      onIncrementClick: () => {
+        dispatch({ type: 'INCREMENT' })
+      }
+    }
+  }
+)(App);
