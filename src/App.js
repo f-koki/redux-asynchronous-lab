@@ -13,9 +13,9 @@ function App({ count, onIncrementClick }) {
 
 export default connect(
   // このコンポーネントにstoreから渡したいstateはこちら
-  state => {
+  store => {
     return {
-      count: state.count,
+      count: store.count,
       // onIncrementClick: state.onIncrementClick ここに書いてはいけない
     }
   },
