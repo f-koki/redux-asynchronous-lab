@@ -30,6 +30,9 @@ const reducer = (state = initialState, action) => {
   }
 }
 
+// storeの中にreducerがある
+// reducerはactionをdispatchすることで実行される
+// そうなると、storeのstateが変更する
 const store = createStore(reducer)
 
 // ここに追加したぶんだけ初期値が増える
