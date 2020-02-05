@@ -1,11 +1,8 @@
-// TODO: これを非同期で叩いて、storeにセットしたい
-export function getPostcodeInfo(postcode) {
+import { actionChangeResponse } from "./action"
+
+export function getPostcodeInfo(dispatch, postcode) {
   return fetch('http://zipcloud.ibsnet.co.jp/api/search?zipcode=' + postcode)
     .then(res => res.json())
-    .then(json => {
-      return json
-    })
-    .catch(error => {
-      return error
-    })
+    .then(json => { dispatch(actionChangeResponse(json)) })
+    .catch(error => { dispatch(actionChangeResponse(error)) })
 }

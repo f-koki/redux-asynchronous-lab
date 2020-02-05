@@ -16,12 +16,7 @@ export function actionDecrement(count) {
 
 export function actionRequestPostcodeAsync(postcode) {
   // 非同期でstoreの状態を変える！
-  return dispatch => {
-    fetch('http://zipcloud.ibsnet.co.jp/api/search?zipcode=' + postcode)
-      .then(res => res.json())
-      .then(json => dispatch(actionChangeResponse({ json })))
-      .catch(err => dispatch(actionChangeResponse({ err })))
-  }
+  return dispatch => { getPostcodeInfo(dispatch, postcode) }
 }
 
 export function actionChangeResponse(response) {
