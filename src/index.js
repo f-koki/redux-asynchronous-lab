@@ -7,9 +7,33 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 const initialState = {
-  count: 0
+  count: 0,
+  response: {}
 }
 
+// actions
+export function actionIncrement(count) {
+  return {
+    type: 'INCREMENT',
+    count
+  }
+}
+
+export function actionDecrement(count) {
+  return {
+    type: 'DECREMENT',
+    count
+  }
+}
+
+export function actionChangePostcode() {
+  return {
+    type: 'CHANGE_POSTCODE'
+  }
+}
+
+
+// reducer
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INCREMENT': {
@@ -22,6 +46,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         count: state.count - 1
+      }
+    }
+    case 'CHANGE_POSTCODE': {
+      
+      return {
+        ...state,
       }
     }
     default: {

@@ -1,26 +1,38 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
+import { actionIncrement, actionChangePostcode } from '.';
 
-function App({ count, onIncrementClick }) {
+function App({
+  count,
+  response,
+  onIncrementClick,
+  onChangePostCodeClick
+}) {
   return (
     <div className="App">
-      <span>{count}</span>
+      <div>{count}</div>
+      <div>{JSON.stringify(response)}</div>
       <button onClick={onIncrementClick}>increment</button>
+      <button onClick={onChangePostCodeClick}>change postcode</button>
     </div>
   )
 }
 
 function mapStateToProps(store) {
   return {
-    count: store.count
+    count: store.count,
+    response: store.response
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onIncrementClick: () => {
-      dispatch({ type: 'INCREMENT' })
+      dispatch(actionIncrement(1))
+    },
+    onChangePostCodeClick: () => {
+      dispatch(actionChangePostcode())
     }
   }
 }
