@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 
 // ここに追加したぶんだけ初期値が増える
+// エントリーポイントだから、ここから処理が始まる
 store.dispatch({type: 'INCREMENT'})
 store.dispatch({type: 'INCREMENT'})
 

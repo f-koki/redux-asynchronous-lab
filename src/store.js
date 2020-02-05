@@ -1,5 +1,6 @@
 import { reducer } from "./reducer"
-import { createStore } from "redux"
+import { createStore, applyMiddleware } from "redux"
+import thunk from "redux-thunk"
 
 export const initialState = {
   count: 0,
@@ -9,4 +10,4 @@ export const initialState = {
 // storeの中にreducerがある
 // reducerはactionをdispatchすることで実行される
 // そうなると、storeのstateが変更する
-export const store = createStore(reducer)
+export const store = createStore(reducer, applyMiddleware(thunk))

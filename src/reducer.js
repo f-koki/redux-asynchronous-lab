@@ -14,10 +14,10 @@ export const reducer = (state = initialState, action) => {
         count: state.count - 1
       }
     }
-    case 'CHANGE_POSTCODE': {
-
+    case 'CHANGE_RESPONSE': {
       return {
         ...state,
+        response: action.response
       }
     }
     default: {
