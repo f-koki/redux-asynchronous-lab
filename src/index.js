@@ -32,6 +32,10 @@ const reducer = (state = initialState, action) => {
 
 const store = createStore(reducer)
 
+// ここに追加したぶんだけ初期値が増える
+store.dispatch({type: 'INCREMENT'})
+store.dispatch({type: 'INCREMENT'})
+
 ReactDOM.render((
   <Provider store={store}>
     <App />
