@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { actionIncrement, actionRequestPostcodeAsync } from './action';
+import { actionIncrement, actionRequestPostcodeAsync, actionDecrement } from './action';
 
 function App({
   count,
   response,
   onIncrementClick,
+  onDecrementClick,
   onChangePostCodeClick
 }) {
   return (
@@ -14,6 +15,7 @@ function App({
       <div>{count}</div>
       <div>{JSON.stringify(response)}</div>
       <button onClick={onIncrementClick}>increment</button>
+      <button onClick={onDecrementClick}>decrement</button>
       <button onClick={onChangePostCodeClick}>change postcode</button>
     </div>
   )
@@ -30,6 +32,9 @@ function mapDispatchToProps(dispatch) {
   return {
     onIncrementClick: () => {
       dispatch(actionIncrement(1))
+    },
+    onDecrementClick: () => {
+      dispatch(actionDecrement(1))
     },
     onChangePostCodeClick: () => {
       dispatch(actionRequestPostcodeAsync(1670051))
