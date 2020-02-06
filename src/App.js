@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { actionIncrement, actionRequestPostcodeAsync, actionDecrement } from './action';
+import { actionIncrement, actionRequestPostcodeAsync, actionDecrement, actionChangePostcode } from './action';
 
 function App({
   count,
@@ -37,7 +37,8 @@ function mapDispatchToProps(dispatch) {
       dispatch(actionDecrement(1))
     },
     onChangePostCodeClick: () => {
-      dispatch(actionRequestPostcodeAsync(1670051))
+      // dispatch(actionRequestPostcodeAsync(1670051))
+      dispatch(actionChangePostcode(1670051))
     }
   }
 }

@@ -1,4 +1,4 @@
-import { initialState } from "./store"
+import { initialState } from "./index"
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
