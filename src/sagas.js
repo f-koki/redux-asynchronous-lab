@@ -4,6 +4,8 @@ import { getPostcodeInfoSaga } from "./api"
 
 function* requestPostcode() {
   while (true) {
+    // アクションを受け取ったら開始する
+    // ☓ メソッド名で検索しても出てこない
     const action = yield take(actionChangePostcode().type)
     const response = yield call(getPostcodeInfoSaga, action.payload)
     if (response) {
